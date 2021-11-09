@@ -1,25 +1,20 @@
-function showVerticalMessage(str){
-    if(str.length > 10){
-        str = str.slice(0, 10);
-        console.log(vecticalTransformStr(str));
-    } else {
-        console.log(vecticalTransformStr(str));
-    }
+function showVerticalMessage(str) {
+    str = str.slice(0, 10);
+    str ? console.log(vecticalTransformStr(str)) : console.log('Была переданна пустая строка');
 }
 
 function vecticalTransformStr(str) {
-    let outputStr = ''
-    if(str.startsWith('м')){
-        outputStr = str.slice(0, 1).toUpperCase() + '\n';
-        for(let char of str.slice(1)){
-            outputStr += `${char}\n`;
-        }
-    } else {
-        for(let char of str){
-            outputStr += `${char}\n`;
-        }
+    return str.startsWith('м')
+        ? str.slice(0, 1).toUpperCase() + '\n' + iterationOnString(str.slice(1))
+        : iterationOnString(str);
+}
+
+function iterationOnString(str) {
+    let outputStr = '';
+    for (let char of str) {
+        outputStr += `${char}\n`;
     }
-    return outputStr;
+    return outputStr.trim();
 }
 
 showVerticalMessage('марафон')
