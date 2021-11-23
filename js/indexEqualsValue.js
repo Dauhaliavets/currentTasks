@@ -36,20 +36,42 @@
 // }
 
 // Version 5 BinarySearch !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// function indexEqualsValue(a) {
+// 	let left = 0;
+// 	let right = a.length;
+// 	let mid;
+
+// 	while (left <= right) {
+// 		mid = Math.floor((left + right) / 2);
+
+// 		if (a[mid] === mid) {
+// 			for (let i = 5; i >= 0; i--) {
+// 				if (a[mid - i] === mid - i) {
+// 					return mid - i;
+// 				}
+// 			}
+// 		} else if (a[mid] > mid) {
+// 			right = mid - 1;
+// 		} else {
+// 			left = mid + 1;
+// 		}
+// 	}
+
+// 	return -1;
+// }
+
 function indexEqualsValue(a) {
 	let left = 0;
 	let right = a.length;
 	let mid;
+	let res = -1;
 
 	while (left <= right) {
 		mid = Math.floor((left + right) / 2);
 
 		if (a[mid] === mid) {
-			for (let i = 5; i >= 0; i--) {
-				if (a[mid - i] === mid - i) {
-					return mid - i;
-				}
-			}
+			res = mid;
+			right = mid - 1;
 		} else if (a[mid] > mid) {
 			right = mid - 1;
 		} else {
@@ -57,5 +79,5 @@ function indexEqualsValue(a) {
 		}
 	}
 
-	return -1;
+	return res;
 }
